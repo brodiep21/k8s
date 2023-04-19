@@ -1,14 +1,15 @@
-FROM goalng:latest
+FROM golang:1.20.3-alpine3.17
 
 LABEL maintainer "brodie <brodiep21@hotmail.com>"
 
-WORKDIR /k8s
+WORKDIR /
 
-COPY go.mod .
-COPY site.html .
-COPY main.go .
+COPY . .
+
+RUN go mod tidy
 
 ENV PORT 8080
+EXPOSE 8080
 
 RUN go build
 
