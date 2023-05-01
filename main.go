@@ -21,9 +21,7 @@ func init() {
 }
 
 func homepage(w http.ResponseWriter, r *http.Request) {
-	// h = Hello{
-	// 	World: "Hello World",
-	// }
+
 	h.World = "Hello World"
 	templ.ExecuteTemplate(w, "site.html", h)
 }
@@ -31,12 +29,16 @@ func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = "8080"
+		port = "8085"
 		log.Printf("Setting default port to %s", port)
 	}
 
 	fmt.Printf("Starting server at %s\n", port)
 
 	http.HandleFunc("/", homepage)
-	http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 }
