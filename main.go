@@ -29,7 +29,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = "8085"
+		port = "8081"
 		log.Printf("Setting default port to %s", port)
 	}
 
