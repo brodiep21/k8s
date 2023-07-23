@@ -1,19 +1,11 @@
 apiVersion: k3d.io/v1alpha4
 kind: Simple
 metadata:
-  name: mycluster
+  name: Brodiescluster
 image: rancher/k3s:v1.24.13-k3s1
 servers: 1
-agents: 2
+agents: 1
 ports:
-  - port: 8081:8081
+  - port: 8080:8080
     nodeFilters:
       - loadbalancer
-registries:
-  create: 
-    name: myregistry
-  config: |
-    mirrors:
-      "my.company.registry":
-        endpoint:
-          - http://localhost:8081

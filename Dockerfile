@@ -11,9 +11,9 @@ COPY main.go .
 RUN go mod download
 
 
-ENV PORT 8081
+ENV PORT 8080
 RUN go build -o /gok8s
 
-EXPOSE 8081
+EXPOSE 8080
 
 CMD ["/gok8s"]
